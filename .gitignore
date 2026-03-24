@@ -1,0 +1,7 @@
+implementation_plan.md
+tasks.md
+node_modules/
+.next/
+.env*
+.DS_Store
+*.log
