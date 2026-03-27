@@ -1,0 +1,3 @@
+﻿components/ThreeScene.tsx(60,10): error TS2741: Property 'args' is missing in type '{ attach: string; count: number; array: Float32Array<ArrayBuffer>; itemSize: number; }' but required in type 'Mutable<Overwrite<Partial<Overwrite<BufferAttribute, MathProps<BufferAttribute> & ReactProps<BufferAttribute>>>, Omit<...>>>'.
+components/ThreeScene.tsx(281,25): error TS2322: Type '{ children: Element[]; disableNormalPass: true; }' is not assignable to type 'IntrinsicAttributes & EffectComposerProps & RefAttributes<EffectComposer>'.
+  Property 'disableNormalPass' does not exist on type 'IntrinsicAttributes & EffectComposerProps & RefAttributes<EffectComposer>'. Did you mean 'enableNormalPass'?

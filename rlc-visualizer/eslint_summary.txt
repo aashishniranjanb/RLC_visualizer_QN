@@ -1,0 +1,168 @@
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\app\page.tsx
+  Line 8: 'ExternalLink' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 169: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`. (react/no-unescaped-entities)
+  Line 169: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`. (react/no-unescaped-entities)
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\BlochSphere.tsx
+  Line 8: 'useMemo' is defined but never used. (@typescript-eslint/no-unused-vars)
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\ComparePanel.tsx
+  Line 8: 'Legend' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 9: 'ChevronRight' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 26: Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `pA.R`, but the source dependencies were [presetA]. Inferred different dependency than source.
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\ComparePanel.tsx:26:22
+  24 |   const pB = PRESETS[presetB as keyof typeof PRESETS]
+  25 |   
+> 26 |   const rA = useMemo(() => solveRLC(pA.R, pA.L, pA.C, pA.V0), [presetA])
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Could not preserve existing manual memoization
+  27 |   const rB = useMemo(() => solveRLC(pB.R, pB.L, pB.C, pB.V0), [presetB])
+  28 |
+  29 |   const combinedData = useMemo(() => { (react-hooks/preserve-manual-memoization)
+  Line 26: Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `pA.L`, but the source dependencies were [presetA]. Inferred different dependency than source.
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\ComparePanel.tsx:26:22
+  24 |   const pB = PRESETS[presetB as keyof typeof PRESETS]
+  25 |   
+> 26 |   const rA = useMemo(() => solveRLC(pA.R, pA.L, pA.C, pA.V0), [presetA])
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Could not preserve existing manual memoization
+  27 |   const rB = useMemo(() => solveRLC(pB.R, pB.L, pB.C, pB.V0), [presetB])
+  28 |
+  29 |   const combinedData = useMemo(() => { (react-hooks/preserve-manual-memoization)
+  Line 26: Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `pA.C`, but the source dependencies were [presetA]. Inferred different dependency than source.
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\ComparePanel.tsx:26:22
+  24 |   const pB = PRESETS[presetB as keyof typeof PRESETS]
+  25 |   
+> 26 |   const rA = useMemo(() => solveRLC(pA.R, pA.L, pA.C, pA.V0), [presetA])
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Could not preserve existing manual memoization
+  27 |   const rB = useMemo(() => solveRLC(pB.R, pB.L, pB.C, pB.V0), [presetB])
+  28 |
+  29 |   const combinedData = useMemo(() => { (react-hooks/preserve-manual-memoization)
+  Line 26: Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `pA.V0`, but the source dependencies were [presetA]. Inferred different dependency than source.
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\ComparePanel.tsx:26:22
+  24 |   const pB = PRESETS[presetB as keyof typeof PRESETS]
+  25 |   
+> 26 |   const rA = useMemo(() => solveRLC(pA.R, pA.L, pA.C, pA.V0), [presetA])
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Could not preserve existing manual memoization
+  27 |   const rB = useMemo(() => solveRLC(pB.R, pB.L, pB.C, pB.V0), [presetB])
+  28 |
+  29 |   const combinedData = useMemo(() => { (react-hooks/preserve-manual-memoization)
+  Line 26: React Hook useMemo has missing dependencies: 'pA.C', 'pA.L', 'pA.R', and 'pA.V0'. Either include them or remove the dependency array. (react-hooks/exhaustive-deps)
+  Line 27: Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `pB.R`, but the source dependencies were [presetB]. Inferred different dependency than source.
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\ComparePanel.tsx:27:22
+  25 |   
+  26 |   const rA = useMemo(() => solveRLC(pA.R, pA.L, pA.C, pA.V0), [presetA])
+> 27 |   const rB = useMemo(() => solveRLC(pB.R, pB.L, pB.C, pB.V0), [presetB])
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Could not preserve existing manual memoization
+  28 |
+  29 |   const combinedData = useMemo(() => {
+  30 |     const step = Math.max(1, Math.floor(rA.t.length / 150)) (react-hooks/preserve-manual-memoization)
+  Line 27: Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `pB.L`, but the source dependencies were [presetB]. Inferred different dependency than source.
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\ComparePanel.tsx:27:22
+  25 |   
+  26 |   const rA = useMemo(() => solveRLC(pA.R, pA.L, pA.C, pA.V0), [presetA])
+> 27 |   const rB = useMemo(() => solveRLC(pB.R, pB.L, pB.C, pB.V0), [presetB])
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Could not preserve existing manual memoization
+  28 |
+  29 |   const combinedData = useMemo(() => {
+  30 |     const step = Math.max(1, Math.floor(rA.t.length / 150)) (react-hooks/preserve-manual-memoization)
+  Line 27: Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `pB.C`, but the source dependencies were [presetB]. Inferred different dependency than source.
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\ComparePanel.tsx:27:22
+  25 |   
+  26 |   const rA = useMemo(() => solveRLC(pA.R, pA.L, pA.C, pA.V0), [presetA])
+> 27 |   const rB = useMemo(() => solveRLC(pB.R, pB.L, pB.C, pB.V0), [presetB])
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Could not preserve existing manual memoization
+  28 |
+  29 |   const combinedData = useMemo(() => {
+  30 |     const step = Math.max(1, Math.floor(rA.t.length / 150)) (react-hooks/preserve-manual-memoization)
+  Line 27: Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `pB.V0`, but the source dependencies were [presetB]. Inferred different dependency than source.
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\ComparePanel.tsx:27:22
+  25 |   
+  26 |   const rA = useMemo(() => solveRLC(pA.R, pA.L, pA.C, pA.V0), [presetA])
+> 27 |   const rB = useMemo(() => solveRLC(pB.R, pB.L, pB.C, pB.V0), [presetB])
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Could not preserve existing manual memoization
+  28 |
+  29 |   const combinedData = useMemo(() => {
+  30 |     const step = Math.max(1, Math.floor(rA.t.length / 150)) (react-hooks/preserve-manual-memoization)
+  Line 27: React Hook useMemo has missing dependencies: 'pB.C', 'pB.L', 'pB.R', and 'pB.V0'. Either include them or remove the dependency array. (react-hooks/exhaustive-deps)
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\ControlPanel.tsx
+  Line 17: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\PhasePortrait.tsx
+  Line 7: 'LineChart' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 7: 'Line' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 8: 'ReferenceLine' is defined but never used. (@typescript-eslint/no-unused-vars)
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\PlotPanel.tsx
+  Line 12: 'Zap' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 12: 'Download' is defined but never used. (@typescript-eslint/no-unused-vars)
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\StoryMode.tsx
+  Line 8: 'AnimatePresence' is defined but never used. (@typescript-eslint/no-unused-vars)
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\ThreeScene.tsx
+  Line 6: 'Float' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 7: 'Suspense' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 30: Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\ThreeScene.tsx:30:67
+  28 |   
+  29 |   // Initial random offsets for each particle
+> 30 |   const offsets = useMemo(() => new Float32Array(count).map(() => Math.random()), [count])
+     |                                                                   ^^^^^^^^^^^^^ Cannot call impure function
+  31 |   
+  32 |   const positions = useMemo(() => new Float32Array(count * 3), [count])
+  33 | (react-hooks/purity)
+  Line 227: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\ThreeScene.tsx:227:21
+  225 |   const { result, oscMode } = useRLCStore()
+  226 |
+> 227 |   useEffect(() => { setMounted(true) }, [])
+      |                     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  228 |
+  229 |   if (!mounted) return (
+  230 |     <div className="w-full h-80 rounded-3xl bg-gray-950 flex items-center justify-center border border-white/5"> (react-hooks/set-state-in-effect)
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\components\TimelineBar.tsx
+  Line 9: 'FastForward' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 9: 'SkipBack' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 9: 'Zap' is defined but never used. (@typescript-eslint/no-unused-vars)
+  Line 10: 'motion' is defined but never used. (@typescript-eslint/no-unused-vars)
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\lib\audioEngine.ts
+  Line 10: Unexpected any. Specify a different type. (@typescript-eslint/no-explicit-any)
+
+C:\Users\Home\Downloads\PROJECTS\Quantum Nexus\rlc-visualizer\store\rlcStore.ts
+  Line 68: 'get' is defined but never used. (@typescript-eslint/no-unused-vars)

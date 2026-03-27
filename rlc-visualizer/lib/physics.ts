@@ -1,6 +1,7 @@
 // lib/physics.ts
-// MEMBER 1 — Physics Engine
-// RLC Ring-Down Energy Visualizer · QTHack04
+// MEMBER 1 — Physics Engine (Phase 2)
+
+import { computeFFT } from './fft'
 
 export interface RLCResult {
   t: number[]
@@ -19,42 +20,32 @@ export interface RLCResult {
   E_initial: number
   E_final: number
   loss_percent: number
-  T1_analog: number // quantum mapping: T1 = 1/alpha
+  T1_analog: number
+  // FFT Results
+  fftFrequencies: number[]
+  fftMagnitudes: number[]
 }
 
-/**
- * Solves an RLC series circuit using 4th-order Runge-Kutta integration.
- *
- * State equations:
- *   dq/dt = i
- *   di/dt = -(R/L)*i - (1/LC)*q
- *
- * @param R Resistance [Ω]
- * @param L Inductance [H]
- * @param C Capacitance [F]
- * @param V0 Initial voltage [V]
- */
 export function solveRLC(R: number, L: number, C: number, V0: number): RLCResult {
-  // Guard against degenerate inputs
   const Rsafe = Math.max(R, 1e-6)
   const Lsafe = Math.max(L, 1e-9)
   const Csafe = Math.max(C, 1e-12)
 
-  const alpha = Rsafe / (2 * Lsafe)       // damping coefficient [s⁻¹]
-  const omega0 = 1 / Math.sqrt(Lsafe * Csafe) // natural frequency [rad/s]
-  const zeta = alpha / omega0              // damping ratio [dimensionless]
-  const Q = omega0 * Lsafe / Rsafe        // quality factor
-  const tau = 1 / alpha                   // time constant [s]
-  const T1_analog = tau                   // quantum analogy: T₁ = 1/α
+  const alpha = Rsafe / (2 * Lsafe)
+  const omega0 = 1 / Math.sqrt(Lsafe * Csafe)
+  const zeta = alpha / omega0
+  const Q = omega0 * Lsafe / Rsafe
+  const tau = 1 / alpha
+  const T1_analog = tau
 
-  // Mode detection with ±0.1% tolerance around critical
   const mode: 'underdamped' | 'critical' | 'overdamped' =
     zeta < 0.999 ? 'underdamped' :
     zeta <= 1.001 ? 'critical' : 'overdamped'
 
-  const N = 1000
-  // Time window: 10 time constants, capped at 2s for display
-  const tMax = Math.min(10 * tau, 2)
+  // TASK 1.4 — Performance: Adjust N based on mode
+  // Overdamped needs fewer points for a good look, Underdamped needs more for ripples
+  const N = mode === 'overdamped' ? 600 : 1200
+  const tMax = Math.min(10 * tau, 2.5) // Increased slightly for better tail visualization
   const dt = tMax / N
 
   const t: number[] = []
@@ -65,7 +56,6 @@ export function solveRLC(R: number, L: number, C: number, V0: number): RLCResult
   const E_total: number[] = []
   const envelope: number[] = []
 
-  // Initial conditions: q₀ = C·V₀, i₀ = 0
   let q = Csafe * V0
   let i = 0
 
@@ -83,7 +73,7 @@ export function solveRLC(R: number, L: number, C: number, V0: number): RLCResult
     E_total.push(Ec + El)
     envelope.push(V0 * Math.exp(-alpha * tn))
 
-    // 4th-order Runge-Kutta
+    // RK4
     const dq1 = i
     const di1 = -(Rsafe / Lsafe) * i - (1 / (Lsafe * Csafe)) * q
 
@@ -100,15 +90,23 @@ export function solveRLC(R: number, L: number, C: number, V0: number): RLCResult
     i += (dt / 6) * (di1 + 2 * di2 + 2 * di3 + di4)
   }
 
+  // TASK 1.2 — FFT Integration
+  // Performance: Downsample V for FFT if N is too high
+  const fftInput = V.length > 1024 
+    ? V.filter((_, idx) => idx % Math.ceil(V.length / 1024) === 0)
+    : V
+  const fftDt = dt * (V.length / fftInput.length)
+  
+  const { frequencies: fftFrequencies, magnitudes: fftMagnitudes } = computeFFT(fftInput, fftDt)
+
   const E_initial = E_total[0]
   const E_final = E_total[E_total.length - 1]
-  const loss_percent = E_initial > 0
-    ? ((E_initial - E_final) / E_initial) * 100
-    : 0
+  const loss_percent = E_initial > 0 ? ((E_initial - E_final) / E_initial) * 100 : 0
 
   return {
     t, V, I, E_cap, E_ind, E_total, envelope,
     alpha, omega0, zeta, Q, tau, mode,
-    E_initial, E_final, loss_percent, T1_analog
+    E_initial, E_final, loss_percent, T1_analog,
+    fftFrequencies, fftMagnitudes
   }
 }
